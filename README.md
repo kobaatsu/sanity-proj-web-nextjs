@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# web-nextjs
 
-## Getting Started
+[`web`](../web) (Astro) と比較するために作成した Next.js 版フロントエンドです。同じ Sanity データセット（`companyInfo` / `news`）を参照し、同等のページ構成を実装しています。
 
-First, run the development server:
+- フレームワーク: Next.js (App Router, Server Components)
+- スタイリング: Tailwind CSS
+- データ取得: `@sanity/client` + GROQ（`defineQuery`）
+- 型安全性: Sanity TypeGen（`sanity.types.ts`、生成物）
+
+## ページ構成
+
+| パス | 内容 |
+| --- | --- |
+| `/` | トップページ（confetti ボタン、各ページへのリンク） |
+| `/markdown-page` | MDX ページ |
+| `/company` | 企業情報（`companyInfo` ドキュメント） |
+| `/news` | お知らせ一覧（`news` ドキュメント） |
+| `/news/[slug]` | お知らせ詳細（Portable Text 本文） |
+
+## セットアップ
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
+cp .env.local.example .env.local
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[http://localhost:3000](http://localhost:3000) を開いて確認できます。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Sanity の型を再生成する
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`studio/schemaTypes` を変更した場合は、以下を実行して `schema.json` と `sanity.types.ts` を更新してください。
+
+```bash
+pnpm typegen
+```
+
+`schema.json` は `../studio/schema.json` からコピーした生成物のため、Studio 側で `sanity schemas extract` を実行済みであることが前提です。
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Sanity + Next.js Integration Guide](https://www.sanity.io/docs/nextjs)
