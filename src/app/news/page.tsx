@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { stegaClean } from 'next-sanity';
 import { getNewsList } from '@/lib/sanity/queries';
 
 export const metadata: Metadata = {
@@ -25,10 +26,11 @@ export default async function NewsListPage() {
 				<ul className="space-y-4">
 					{news.map((item) => (
 						<li key={item._id} className="border-b pb-4">
-							<Link href={`/news/${item.slug?.current}`} className="block">
+							<Link href={`/news/${stegaClean(item.slug?.current)}`} className="block">
 								<p className="text-sm text-gray-500">
 									{item.publishedAt && new Date(item.publishedAt).toLocaleDateString('ja-JP')}
-									{item.category && ` ・ ${categoryLabels[item.category] ?? item.category}`}
+									{item.category &&
+										` ・ ${categoryLabels[stegaClean(item.category)] ?? item.category}`}
 								</p>
 								<h2 className="text-lg font-semibold underline">{item.title}</h2>
 								{item.excerpt && <p className="text-gray-700">{item.excerpt}</p>}

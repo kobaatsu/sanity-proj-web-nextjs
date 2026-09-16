@@ -1,4 +1,4 @@
-import { createClient } from '@sanity/client';
+import { createClient } from 'next-sanity';
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
@@ -14,4 +14,7 @@ export const sanityClient = createClient({
 	dataset,
 	apiVersion: '2024-01-01',
 	useCdn: false, // 静的生成時に最新データを取得するため
+	stega: {
+		studioUrl: 'http://localhost:3333',
+	},
 });

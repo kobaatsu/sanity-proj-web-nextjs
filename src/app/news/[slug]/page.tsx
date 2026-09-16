@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { stegaClean } from 'next-sanity';
 import { urlFor } from '@/lib/sanity/image';
 import { getNewsBySlug, getNewsSlugs } from '@/lib/sanity/queries';
 
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { slug } = await params;
 	const item = await getNewsBySlug(slug);
 	return {
-		title: item?.title ?? 'お知らせが見つかりません',
+		title: stegaClean(item?.title) ?? 'お知らせが見つかりません',
 	};
 }
 
@@ -40,7 +41,7 @@ export default async function NewsDetailPage({ params }: Props) {
 			{item.mainImage && (
 				<Image
 					src={urlFor(item.mainImage).width(800).url()}
-					alt={item.title ?? ''}
+					alt={stegaClean(item.title) ?? ''}
 					width={800}
 					height={450}
 					className="mb-6"
