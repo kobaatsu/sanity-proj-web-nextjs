@@ -1,10 +1,6 @@
-import { defineQuery } from 'groq';
-import type {
-	COMPANY_INFO_QUERY_RESULT,
-	NEWS_BY_SLUG_QUERY_RESULT,
-	NEWS_LIST_QUERY_RESULT,
-	NEWS_SLUGS_QUERY_RESULT,
-} from '@/sanity.types';
+import { defineQuery } from 'next-sanity';
+import type { NEWS_SLUGS_QUERY_RESULT } from '@/sanity.types';
+import { sanityFetch } from './live';
 import { sanityClient } from './client';
 
 export const NEWS_LIST_QUERY = defineQuery(
@@ -25,18 +21,22 @@ export const NEWS_SLUGS_QUERY = defineQuery(
 
 export const COMPANY_INFO_QUERY = defineQuery(`*[_type == "companyInfo"][0]`);
 
-export async function getNewsList(): Promise<NEWS_LIST_QUERY_RESULT> {
-	return await sanityClient.fetch(NEWS_LIST_QUERY);
+export async function getNewsList() {
+	const { data } = await sanityFetch({ query: NEWS_LIST_QUERY });
+	return data;
 }
 
-export async function getNewsBySlug(slug: string): Promise<NEWS_BY_SLUG_QUERY_RESULT> {
-	return await sanityClient.fetch(NEWS_BY_SLUG_QUERY, { slug });
+export async function getNewsBySlug(slug: string) {
+	const { data } = await sanityFetch({ query: NEWS_BY_SLUG_QUERY, params: { slug } });
+	return data;
 }
 
 export async function getNewsSlugs(): Promise<NEWS_SLUGS_QUERY_RESULT> {
+	// generateStaticParamsは公開データのみで良く、Draft Mode購読は不要なため通常のclientで取得
 	return await sanityClient.fetch(NEWS_SLUGS_QUERY);
 }
 
-export async function getCompanyInfo(): Promise<COMPANY_INFO_QUERY_RESULT> {
-	return await sanityClient.fetch(COMPANY_INFO_QUERY);
+export async function getCompanyInfo() {
+	const { data } = await sanityFetch({ query: COMPANY_INFO_QUERY });
+	return data;
 }

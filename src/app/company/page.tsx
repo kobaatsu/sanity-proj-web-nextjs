@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { stegaClean } from 'next-sanity';
 import { urlFor } from '@/lib/sanity/image';
 import { getCompanyInfo } from '@/lib/sanity/queries';
 
@@ -19,7 +20,7 @@ export default async function CompanyPage() {
 					{company.logo && (
 						<Image
 							src={urlFor(company.logo).width(200).url()}
-							alt={company.name ?? ''}
+							alt={stegaClean(company.name) ?? ''}
 							width={200}
 							height={200}
 						/>
@@ -67,7 +68,7 @@ export default async function CompanyPage() {
 							<>
 								<dt className="font-semibold">Webサイト</dt>
 								<dd>
-									<a href={company.website} className="underline">
+									<a href={stegaClean(company.website)} className="underline">
 										{company.website}
 									</a>
 								</dd>
