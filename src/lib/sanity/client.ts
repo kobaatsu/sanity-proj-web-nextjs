@@ -15,6 +15,6 @@ export const sanityClient = createClient({
 	apiVersion: '2024-01-01',
 	useCdn: false, // 静的生成時に最新データを取得するため
 	stega: {
-		studioUrl: 'http://localhost:3333',
+		studioUrl: process.env.NEXT_PUBLIC_SANITY_STUDIO_URL || 'http://localhost:3333',
 	},
 });
