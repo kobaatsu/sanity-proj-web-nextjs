@@ -7,13 +7,6 @@ export const metadata: Metadata = {
 	title: 'お知らせ',
 };
 
-const categoryLabels: Record<string, string> = {
-	general: 'お知らせ',
-	press: 'プレスリリース',
-	event: 'イベント',
-	product: '製品情報',
-};
-
 export default async function NewsListPage() {
 	const news = await getNewsList();
 
@@ -29,8 +22,7 @@ export default async function NewsListPage() {
 							<Link href={`/news/${stegaClean(item.slug?.current)}`} className="block">
 								<p className="text-sm text-gray-500">
 									{item.publishedAt && new Date(item.publishedAt).toLocaleDateString('ja-JP')}
-									{item.category &&
-										` ・ ${categoryLabels[stegaClean(item.category)] ?? item.category}`}
+									{item.category?.title && ` ・ ${stegaClean(item.category.title)}`}
 								</p>
 								<h2 className="text-lg font-semibold underline">{item.title}</h2>
 								{item.excerpt && <p className="text-gray-700">{item.excerpt}</p>}
