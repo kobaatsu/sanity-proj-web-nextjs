@@ -1,0 +1,9 @@
+# Next.js build output
+.next/
+
+# Sanity TypeGen generated file
+sanity.types.ts
+schema.json
+
+# Lockfile
+pnpm-lock.yaml
