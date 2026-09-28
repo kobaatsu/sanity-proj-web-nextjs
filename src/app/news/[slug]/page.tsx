@@ -7,6 +7,8 @@ import {stegaClean} from 'next-sanity'
 import {urlFor} from '@/lib/sanity/image'
 import {getNewsBySlug, getNewsSlugs} from '@/lib/sanity/queries'
 
+const BODY_IMAGE_WIDTH = 800
+
 type Props = {
   params: Promise<{slug: string}>
 }
@@ -49,7 +51,23 @@ export default async function NewsDetailPage({params}: Props) {
       )}
       {item.body && (
         <div className="prose">
-          <PortableText value={item.body} />
+          {item.body.map((section) => {
+            if (section._type === 'richText') {
+              return section.content && <PortableText key={section._key} value={section.content} />
+            }
+            if (!section.asset) return null
+            return (
+              <Image
+                key={section._key}
+                src={urlFor(section).width(BODY_IMAGE_WIDTH).url()}
+                alt={section.omitAlt ? '' : (stegaClean(section.alt) ?? '')}
+                width={BODY_IMAGE_WIDTH}
+                height={
+                  section.aspectRatio ? Math.round(BODY_IMAGE_WIDTH / section.aspectRatio) : 450
+                }
+              />
+            )
+          })}
         </div>
       )}
       <Link href="/news" className="mt-8 inline-block underline">
