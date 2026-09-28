@@ -38,10 +38,10 @@ export default async function NewsDetailPage({params}: Props) {
         {item.publishedAt && new Date(item.publishedAt).toLocaleDateString('ja-JP')}
       </p>
       <h1 className="mb-4 text-2xl font-bold">{item.title}</h1>
-      {item.mainImage && (
+      {item.mainImage?.asset && (
         <Image
           src={urlFor(item.mainImage).width(800).url()}
-          alt={stegaClean(item.title) ?? ''}
+          alt={item.mainImage.omitAlt ? '' : (stegaClean(item.mainImage.alt ?? item.title) ?? '')}
           width={800}
           height={450}
           className="mb-6"
