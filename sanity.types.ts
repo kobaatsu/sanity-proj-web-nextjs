@@ -12,214 +12,216 @@
  * ---------------------------------------------------------------------------------
  */
 
-export declare const internalGroqTypeReferenceTo: unique symbol;
+export declare const internalGroqTypeReferenceTo: unique symbol
 
 // Source: schema.json
 export type SanityImageAssetReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-};
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+}
 
 export type CompanyInfo = {
-  _id: string;
-  _type: "companyInfo";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  name?: string;
-  description?: string;
+  _id: string
+  _type: 'companyInfo'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name?: string
+  description?: string
   logo?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  representative?: string;
-  establishedDate?: string;
-  capital?: string;
-  address?: string;
-  phone?: string;
-  email?: string;
-  website?: string;
-};
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  representative?: string
+  establishedDate?: string
+  capital?: string
+  address?: string
+  phone?: string
+  email?: string
+  website?: string
+}
 
 export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
-};
+  _type: 'sanity.imageCrop'
+  top?: number
+  bottom?: number
+  left?: number
+  right?: number
+}
 
 export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x?: number;
-  y?: number;
-  height?: number;
-  width?: number;
-};
+  _type: 'sanity.imageHotspot'
+  x?: number
+  y?: number
+  height?: number
+  width?: number
+}
 
 export type NewsCategoryReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "newsCategory";
-};
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'newsCategory'
+}
 
 export type News = {
-  _id: string;
-  _type: "news";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  slug?: Slug;
-  publishedAt?: string;
-  category?: NewsCategoryReference;
-  excerpt?: string;
+  _id: string
+  _type: 'news'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  title?: string
+  slug?: Slug
+  publishedAt?: string
+  category?: NewsCategoryReference
+  excerpt?: string
   mainImage?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    omitAlt?: boolean
+    alt?: string
+    _type: 'image'
+  }
   body?: Array<{
     children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    listItem?: "bullet" | "number";
+      marks?: Array<string>
+      text?: string
+      _type: 'span'
+      _key: string
+    }>
+    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
+    listItem?: 'bullet' | 'number'
     markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }>;
-};
+      href?: string
+      _type: 'link'
+      _key: string
+    }>
+    level?: number
+    _type: 'block'
+    _key: string
+  }>
+}
 
 export type NewsCategory = {
-  _id: string;
-  _type: "newsCategory";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  slug?: Slug;
-  order?: number;
-};
+  _id: string
+  _type: 'newsCategory'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  title?: string
+  slug?: Slug
+  order?: number
+}
 
 export type Slug = {
-  _type: "slug";
-  current?: string;
-  source?: string;
-};
+  _type: 'slug'
+  current?: string
+  source?: string
+}
 
 export type SanityImagePaletteSwatch = {
-  _type: "sanity.imagePaletteSwatch";
-  background?: string;
-  foreground?: string;
-  population?: number;
-  title?: string;
-};
+  _type: 'sanity.imagePaletteSwatch'
+  background?: string
+  foreground?: string
+  population?: number
+  title?: string
+}
 
 export type SanityImagePalette = {
-  _type: "sanity.imagePalette";
-  darkMuted?: SanityImagePaletteSwatch;
-  lightVibrant?: SanityImagePaletteSwatch;
-  darkVibrant?: SanityImagePaletteSwatch;
-  vibrant?: SanityImagePaletteSwatch;
-  dominant?: SanityImagePaletteSwatch;
-  lightMuted?: SanityImagePaletteSwatch;
-  muted?: SanityImagePaletteSwatch;
-};
+  _type: 'sanity.imagePalette'
+  darkMuted?: SanityImagePaletteSwatch
+  lightVibrant?: SanityImagePaletteSwatch
+  darkVibrant?: SanityImagePaletteSwatch
+  vibrant?: SanityImagePaletteSwatch
+  dominant?: SanityImagePaletteSwatch
+  lightMuted?: SanityImagePaletteSwatch
+  muted?: SanityImagePaletteSwatch
+}
 
 export type SanityImageDimensions = {
-  _type: "sanity.imageDimensions";
-  height?: number;
-  width?: number;
-  aspectRatio?: number;
-};
+  _type: 'sanity.imageDimensions'
+  height?: number
+  width?: number
+  aspectRatio?: number
+}
 
 export type SanityImageMetadata = {
-  _type: "sanity.imageMetadata";
-  location?: Geopoint;
-  dimensions?: SanityImageDimensions;
-  palette?: SanityImagePalette;
-  lqip?: string;
-  blurHash?: string;
-  thumbHash?: string;
-  hasAlpha?: boolean;
-  isOpaque?: boolean;
-};
+  _type: 'sanity.imageMetadata'
+  location?: Geopoint
+  dimensions?: SanityImageDimensions
+  palette?: SanityImagePalette
+  lqip?: string
+  blurHash?: string
+  thumbHash?: string
+  hasAlpha?: boolean
+  isOpaque?: boolean
+}
 
 export type SanityFileAsset = {
-  _id: string;
-  _type: "sanity.fileAsset";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  originalFilename?: string;
-  label?: string;
-  title?: string;
-  description?: string;
-  altText?: string;
-  sha1hash?: string;
-  extension?: string;
-  mimeType?: string;
-  size?: number;
-  assetId?: string;
-  uploadId?: string;
-  path?: string;
-  url?: string;
-  source?: SanityAssetSourceData;
-};
+  _id: string
+  _type: 'sanity.fileAsset'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  originalFilename?: string
+  label?: string
+  title?: string
+  description?: string
+  altText?: string
+  sha1hash?: string
+  extension?: string
+  mimeType?: string
+  size?: number
+  assetId?: string
+  uploadId?: string
+  path?: string
+  url?: string
+  source?: SanityAssetSourceData
+}
 
 export type SanityAssetSourceData = {
-  _type: "sanity.assetSourceData";
-  name?: string;
-  id?: string;
-  url?: string;
-};
+  _type: 'sanity.assetSourceData'
+  name?: string
+  id?: string
+  url?: string
+}
 
 export type SanityImageAsset = {
-  _id: string;
-  _type: "sanity.imageAsset";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  originalFilename?: string;
-  label?: string;
-  title?: string;
-  description?: string;
-  altText?: string;
-  sha1hash?: string;
-  extension?: string;
-  mimeType?: string;
-  size?: number;
-  assetId?: string;
-  uploadId?: string;
-  path?: string;
-  url?: string;
-  metadata?: SanityImageMetadata;
-  source?: SanityAssetSourceData;
-};
+  _id: string
+  _type: 'sanity.imageAsset'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  originalFilename?: string
+  label?: string
+  title?: string
+  description?: string
+  altText?: string
+  sha1hash?: string
+  extension?: string
+  mimeType?: string
+  size?: number
+  assetId?: string
+  uploadId?: string
+  path?: string
+  url?: string
+  metadata?: SanityImageMetadata
+  source?: SanityAssetSourceData
+}
 
 export type Geopoint = {
-  _type: "geopoint";
-  lat?: number;
-  lng?: number;
-  alt?: number;
-};
+  _type: 'geopoint'
+  lat?: number
+  lng?: number
+  alt?: number
+}
 
 export type AllSanitySchemaTypes =
   | SanityImageAssetReference
@@ -237,105 +239,107 @@ export type AllSanitySchemaTypes =
   | SanityFileAsset
   | SanityAssetSourceData
   | SanityImageAsset
-  | Geopoint;
+  | Geopoint
 
 // Source: src/lib/sanity/queries.ts
 // Variable: NEWS_LIST_QUERY
 // Query: *[_type == "news" && defined(slug.current)] | order(publishedAt desc){    _id, title, slug, publishedAt, "category": category->{title, slug}, excerpt  }
 export type NEWS_LIST_QUERY_RESULT = Array<{
-  _id: string;
-  title: string | null;
-  slug: Slug | null;
-  publishedAt: string | null;
+  _id: string
+  title: string | null
+  slug: Slug | null
+  publishedAt: string | null
   category: {
-    title: string | null;
-    slug: Slug | null;
-  } | null;
-  excerpt: string | null;
-}>;
+    title: string | null
+    slug: Slug | null
+  } | null
+  excerpt: string | null
+}>
 
 // Source: src/lib/sanity/queries.ts
 // Variable: NEWS_BY_SLUG_QUERY
 // Query: *[_type == "news" && slug.current == $slug][0]{    _id, title, publishedAt, "category": category->{title, slug}, mainImage, body  }
 export type NEWS_BY_SLUG_QUERY_RESULT = {
-  _id: string;
-  title: string | null;
-  publishedAt: string | null;
+  _id: string
+  title: string | null
+  publishedAt: string | null
   category: {
-    title: string | null;
-    slug: Slug | null;
-  } | null;
+    title: string | null
+    slug: Slug | null
+  } | null
   mainImage: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  } | null;
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    omitAlt?: boolean
+    alt?: string
+    _type: 'image'
+  } | null
   body: Array<{
     children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    listItem?: "bullet" | "number";
+      marks?: Array<string>
+      text?: string
+      _type: 'span'
+      _key: string
+    }>
+    style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
+    listItem?: 'bullet' | 'number'
     markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }> | null;
-} | null;
+      href?: string
+      _type: 'link'
+      _key: string
+    }>
+    level?: number
+    _type: 'block'
+    _key: string
+  }> | null
+} | null
 
 // Source: src/lib/sanity/queries.ts
 // Variable: NEWS_SLUGS_QUERY
 // Query: *[_type == "news" && defined(slug.current)]{ "slug": slug.current }
 export type NEWS_SLUGS_QUERY_RESULT = Array<{
-  slug: string | null;
-}>;
+  slug: string | null
+}>
 
 // Source: src/lib/sanity/queries.ts
 // Variable: COMPANY_INFO_QUERY
 // Query: *[_type == "companyInfo"][0]
 export type COMPANY_INFO_QUERY_RESULT = {
-  _id: string;
-  _type: "companyInfo";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  name?: string;
-  description?: string;
+  _id: string
+  _type: 'companyInfo'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name?: string
+  description?: string
   logo?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  representative?: string;
-  establishedDate?: string;
-  capital?: string;
-  address?: string;
-  phone?: string;
-  email?: string;
-  website?: string;
-} | null;
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  representative?: string
+  establishedDate?: string
+  capital?: string
+  address?: string
+  phone?: string
+  email?: string
+  website?: string
+} | null
 
 // Query TypeMap
 declare global {
   interface SanityQueries {
-    '*[_type == "news" && defined(slug.current)] | order(publishedAt desc){\n    _id, title, slug, publishedAt, "category": category->{title, slug}, excerpt\n  }': NEWS_LIST_QUERY_RESULT;
-    '*[_type == "news" && slug.current == $slug][0]{\n    _id, title, publishedAt, "category": category->{title, slug}, mainImage, body\n  }': NEWS_BY_SLUG_QUERY_RESULT;
-    '*[_type == "news" && defined(slug.current)]{ "slug": slug.current }': NEWS_SLUGS_QUERY_RESULT;
-    '*[_type == "companyInfo"][0]': COMPANY_INFO_QUERY_RESULT;
+    '*[_type == "news" && defined(slug.current)] | order(publishedAt desc){\n    _id, title, slug, publishedAt, "category": category->{title, slug}, excerpt\n  }': NEWS_LIST_QUERY_RESULT
+    '*[_type == "news" && slug.current == $slug][0]{\n    _id, title, publishedAt, "category": category->{title, slug}, mainImage, body\n  }': NEWS_BY_SLUG_QUERY_RESULT
+    '*[_type == "news" && defined(slug.current)]{ "slug": slug.current }': NEWS_SLUGS_QUERY_RESULT
+    '*[_type == "companyInfo"][0]': COMPANY_INFO_QUERY_RESULT
   }
 }
 // Lets @sanity/client releases that predate the global registry read it too
-declare module "@sanity/client" {
+declare module '@sanity/client' {
   interface SanityQueries extends globalThis.SanityQueries {}
 }
